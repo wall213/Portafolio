@@ -5,26 +5,26 @@ const About = () => {
     <AboutSection id="about" className="section container">
       <AboutGrid>
         <AboutContent>
-          <h2>Engineering Digital Structures</h2>
+          <h2>Ingeniero en Sistemas Computacionales</h2>
           <p>
-            I am Aldo Garcia, a software architect specializing in the fusion of high-performance backend systems and fluid, responsive user interfaces. My approach is rooted in the belief that code is the structural steel of the modern world.
+            Soy Aldo García, desarrollador fullstack especializado en el diseño y construcción de sistemas escalables y de alto rendimiento. 
+            Mi enfoque se centra en la arquitectura de software, la separación de responsabilidades y la creación de soluciones mantenibles 
+            a largo plazo.
           </p>
           <p>
-            I treat every repository as a blueprint for scalability, focusing on modular architecture, performance optimization, and clean, maintainable logic. From cloud-native microservices to elegant mobile experiences, I build tools that empower businesses to scale.
+            Trabajo con patrones modernos, APIs robustas y estructuras modulares que permiten evolucionar productos sin comprometer su 
+            estabilidad. Desde servicios backend en .NET hasta interfaces dinámicas en React y Angular, construyo soluciones integrales 
+            optimizadas para rendimiento, escalabilidad y experiencia de usuario.
           </p>
           
           <AboutStats>
             <StatItem>
-              <StatNumber>5+</StatNumber>
-              <StatLabel className="label-caps">Years Exp.</StatLabel>
+              <StatNumber>4+</StatNumber>
+              <StatLabel className="label-caps">Años Exp.</StatLabel>
             </StatItem>
             <StatItem>
               <StatNumber>40+</StatNumber>
-              <StatLabel className="label-caps">Projects</StatLabel>
-            </StatItem>
-            <StatItem>
-              <StatNumber>12</StatNumber>
-              <StatLabel className="label-caps">Technologies</StatLabel>
+              <StatLabel className="label-caps">Projectos</StatLabel>
             </StatItem>
           </AboutStats>
         </AboutContent>

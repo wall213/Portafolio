@@ -7,10 +7,7 @@ const Hero = () => {
         <HeroLabel className="label-caps">ALDO GARCIA</HeroLabel>
         <HeroTitle>DESARROLLADOR FULLSTACK</HeroTitle>
         <HeroSubtitle>
-          Estratega Creativo y Desarrollador de Soluciones Digitales. 
-          Transformo la complejidad en experiences intuitivas y soluciones robustas.
-          Mi enfoque combina estética avanzada, arquitectura escalable y metodologías ágiles
-          para entregar productos que resuelven problemas reales.
+          De la idea a la solución: simple, funcional y escalable.
         </HeroSubtitle>
         <HeroActions>
           <PrimaryButton>Ver Proyectos</PrimaryButton>
