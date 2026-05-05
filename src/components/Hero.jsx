@@ -7,11 +7,14 @@ const Hero = () => {
         <HeroLabel className="label-caps">ALDO GARCIA</HeroLabel>
         <HeroTitle>DESARROLLADOR FULLSTACK</HeroTitle>
         <HeroSubtitle>
-          Building scalable and modern web & mobile applications with mathematical precision and aesthetic excellence.
+          Estratega Creativo y Desarrollador de Soluciones Digitales. 
+          Transformo la complejidad en experiences intuitivas y soluciones robustas.
+          Mi enfoque combina estética avanzada, arquitectura escalable y metodologías ágiles
+          para entregar productos que resuelven problemas reales.
         </HeroSubtitle>
         <HeroActions>
-          <PrimaryButton>View Projects</PrimaryButton>
-          <SecondaryButton>Contact Me</SecondaryButton>
+          <PrimaryButton>Ver Proyectos</PrimaryButton>
+          <SecondaryButton>Contacto</SecondaryButton>
         </HeroActions>
       </HeroContent>
     </HeroSection>
@@ -24,9 +27,9 @@ const HeroSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
-  min-height: 70vh;
+  padding-top: 60px;
+  min-height: 50vh;
 `;
 
 const HeroContent = styled.div`

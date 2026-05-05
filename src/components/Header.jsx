@@ -1,26 +1,55 @@
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const Header = () => {
+  const [activeSection, setActiveSection] = useState('');
+
+  const scrollToTop = (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  useEffect(() => {
+    const sections = document.querySelectorAll('section[id]');
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: '-20% 0px -60% 0px',
+        threshold: 0
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <HeaderContainer className="container">
+    <HeaderContainer>
       <Logo>
-        <a href="/">Software Developer</a>
+        <a href="#" onClick={scrollToTop}>Software Developer</a>
       </Logo>
-      <nav>
+      <Nav>
         <NavList>
-          <li><NavLink href="#about" className="label-caps">ABOUT</NavLink></li>
-          <li><NavLink href="#projects" className="label-caps">PROJECTS</NavLink></li>
-          <li><NavLink href="#stack" className="label-caps">STACK</NavLink></li>
-          <li><NavLink href="#contact" className="label-caps">CONTACT</NavLink></li>
+          <li><NavLink href="#about" $active={activeSection === 'about'} className="label-caps">SOBRE MÍ</NavLink></li>
+          <li><NavLink href="#projects" $active={activeSection === 'projects'} className="label-caps">PROJECTOS</NavLink></li>
+          <li><NavLink href="#stack" $active={activeSection === 'stack'} className="label-caps">STACK</NavLink></li>
+          <li><NavLink href="#contact" $active={activeSection === 'contact'} className="label-caps">CONTACTO</NavLink></li>
         </NavList>
-      </nav>
+      </Nav>
       <Actions>
-        <button aria-label="Toggle theme">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-            <line x1="8" y1="21" x2="16" y2="21"></line>
-            <line x1="12" y1="17" x2="12" y2="21"></line>
-          </svg>
+        <button aria-label="Terminal">
+          <IconTerminal />
         </button>
       </Actions>
     </HeaderContainer>
@@ -29,50 +58,99 @@ const Header = () => {
 
 export default Header;
 
+const IconTerminal = () => (
+  <svg viewBox="0 0 25 25" fill="currentColor">
+    <rect x="2" y="5" width="20" height="16" rx="2" />
+    <rect x="4" y="10" width="16" height="9" fill="var(--color-bg)" />
+    <path d="M6,12l2,2l-2,2h1.2l2-2l-2-2H6z" fill="currentColor" />
+    <rect x="12" y="15.5" width="4" height="1.5" fill="currentColor" />
+  </svg>
+);
+
 const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 32px;
-  padding-bottom: 32px;
-  gap: 32px; /* Add gap to prevent squishing */
-  flex-wrap: wrap; /* Allow wrapping on very small screens */
+  padding: 24px 48px;
+  gap: 32px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  background-color: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+  @media (max-width: 768px) {
+    padding: 16px 24px;
+  }
 `;
 
 const Logo = styled.div`
+  flex: 1;
   flex-shrink: 0;
   a {
     font-family: var(--font-sans);
     font-weight: 700;
-    font-size: 24px; /* Increased slightly to make it look intentional */
+    font-size: 24px;
     color: var(--text-primary);
     letter-spacing: -0.02em;
-    white-space: nowrap; /* Prevent wrapping inside logo */
+    white-space: nowrap;
   }
+`;
+
+const Nav = styled.nav`
+  flex: 2;
+  display: flex;
+  justify-content: center;
 `;
 
 const NavList = styled.ul`
   display: flex;
-  gap: 32px;
-  flex-wrap: wrap; /* Prevent navigation from breaking */
+  gap: 48px;
+  flex-wrap: wrap;
 `;
 
 const NavLink = styled.a`
-  color: var(--text-primary);
-  opacity: 0.7;
+  font-size: 16px;
+  color: ${props => props.$active ? 'var(--color-accent)' : 'var(--text-primary)'};
+  opacity: ${props => props.$active ? '1' : '0.7'};
   transition: opacity 0.2s ease, color 0.2s ease;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-accent);
+    transform: scaleX(${props => props.$active ? '1' : '0'});
+    transform-origin: center;
+    transition: transform 0.2s ease;
+  }
 
   &:hover {
     opacity: 1;
     color: var(--color-accent);
+    
+    &::after {
+      transform: scaleX(1);
+    }
   }
 `;
 
 const Actions = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
   button {
     color: var(--text-primary);
     opacity: 0.7;
-    transition: opacity 0.2s ease;
+    transition: all 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,6 +158,12 @@ const Actions = styled.div`
     &:hover {
       opacity: 1;
       color: var(--color-accent);
+      transform: translateY(-2px);
+    }
+    
+    svg {
+      width: 28px;
+      height: 28px;
     }
   }
 `;

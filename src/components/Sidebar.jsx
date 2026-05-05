@@ -4,7 +4,7 @@ const Sidebar = () => {
   return (
     <SidebarContainer>
       <TopLogo>
-        <IconHexagonB />
+        <IconHexagonA />
       </TopLogo>
       <BottomSection>
         <SocialLinks>
@@ -22,10 +22,11 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-const IconHexagonB = () => (
-  <svg viewBox="0 0 100 100">
-    <polygon points="50,5 90,25 90,75 50,95 10,75 10,25" />
-    <text x="50" y="60" fontSize="35" fontWeight="bold" textAnchor="middle" fill="currentColor" stroke="none">A</text>
+const IconHexagonA = () => (
+  <svg viewBox="0 0 100 100" className="hexagon-svg">
+    <polygon className="shadow" points="50,5 90,25 90,75 50,95 10,75 10,25" />
+    <polygon className="front" points="50,5 90,25 90,75 50,95 10,75 10,25" />
+    <text x="50" y="62" fontSize="35" fontWeight="bold" textAnchor="middle" fill="currentColor" stroke="none">A</text>
   </svg>
 );
 
@@ -67,16 +68,41 @@ const TopLogo = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
+  cursor: pointer;
+  
   svg {
     width: 48px;
     height: 48px;
     color: var(--color-accent);
     fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+
+    .shadow {
+      fill: var(--color-accent);
+      opacity: 0;
+      transition: all 0.2s ease;
+    }
+
+    .front {
+      fill: var(--color-bg);
+      stroke: var(--color-accent);
+      stroke-width: 5;
+      transition: all 0.2s ease;
+    }
+    
+    text {
+      fill: var(--color-accent);
+      transition: all 0.2s ease;
+    }
+  }
+
+  &:hover svg {
+    .shadow {
+      opacity: 1;
+      transform: translate(6px, 6px);
+    }
+    .front, text {
+      transform: translate(-3px, -3px);
+    }
   }
 `;
 
