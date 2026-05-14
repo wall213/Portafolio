@@ -146,13 +146,13 @@ const HeaderContainer = styled.header`
 
 const Logo = styled.div`
   flex: 1;
-  flex-shrink: 0;
   display: flex;
   justify-content: flex-start;
 
   @media (max-width: 900px) {
     justify-content: center;
     order: 2;
+    flex: 2;
   }
 
   a {
@@ -164,7 +164,11 @@ const Logo = styled.div`
     white-space: nowrap;
     
     @media (max-width: 900px) {
-      font-size: 20px;
+      font-size: 18px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 16px;
     }
   }
 `;
