@@ -58,7 +58,7 @@ const SidebarContainer = styled.div`
   z-index: 100;
   border-right: 1px solid var(--border-light);
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     display: none;
   }
 `;

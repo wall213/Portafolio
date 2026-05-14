@@ -6,19 +6,9 @@ const Footer = () => {
   return (
     <FooterContainer className="container">
       <FooterContent>
-        <div>
-          <FooterLogo>Software Developer</FooterLogo>
-        </div>
-        
         <FooterCopyright className="label-caps">
-          &copy; {currentYear} THE ARCHITECT. ENGINEERED FOR PERFORMANCE.
+          &copy; {currentYear} 
         </FooterCopyright>
-        
-        <FooterLinks className="label-caps">
-          <a href="https://github.com/alexrivera" target="_blank" rel="noopener noreferrer">GITHUB</a>
-          <a href="https://linkedin.com/in/alexrivera" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">RESUME</a>
-        </FooterLinks>
       </FooterContent>
     </FooterContainer>
   );

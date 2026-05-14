@@ -39,7 +39,7 @@ const MainContent = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     margin-left: 0;
   }
 `;

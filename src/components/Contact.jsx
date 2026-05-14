@@ -1,40 +1,22 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
-const IconEmail = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-    <polyline points="22,6 12,13 2,6"></polyline>
-  </svg>
-);
-
-const IconGithub = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-  </svg>
-);
-
 const Contact = () => {
+  const [message, setMessage] = useState('');
   return (
     <section id="contact" className="section container">
       <ContactGrid>
         <ContactInfo>
-          <h2>Initiate Connection</h2>
-          <p>Currently accepting inquiries for architectural consulting, fullstack development, and technical partnerships.</p>
+          <h2>Iniciar Comunicacion</h2>
+          <p>Actualmente aceptando proyectos de consultoria en arquitectura, 
+            desarrollo fullstack y asociaciones tecnicas.</p>
           
           <ContactMethods>
             <ContactMethod>
               <MethodIcon><IconEmail /></MethodIcon>
               <MethodDetails>
                 <span className="label-caps">EMAIL</span>
-                <a href="mailto:alex@architect.dev">alex@architect.dev</a>
-              </MethodDetails>
-            </ContactMethod>
-            
-            <ContactMethod>
-              <MethodIcon><IconGithub /></MethodIcon>
-              <MethodDetails>
-                <span className="label-caps">GITHUB</span>
-                <a href="https://github.com/alexrivera" target="_blank" rel="noopener noreferrer">github.com/alexrivera</a>
+                <a href="mailto:wall2mdf@gmail.com">wall2mdf@gmail.com</a>
               </MethodDetails>
             </ContactMethod>
           </ContactMethods>
@@ -43,22 +25,30 @@ const Contact = () => {
         <ContactFormPanel className="glass-panel">
           <form onSubmit={(e) => e.preventDefault()}>
             <FormGroup>
-              <label htmlFor="name" className="label-caps">FULL NAME</label>
-              <input type="text" id="name" placeholder="John Doe" />
+              <label htmlFor="name" className="label-caps">Nombre Completo</label>
+              <input type="text" id="name" placeholder="Aldo Garcia" />
             </FormGroup>
             
             <FormGroup>
-              <label htmlFor="email" className="label-caps">EMAIL ADDRESS</label>
-              <input type="email" id="email" placeholder="john@example.com" />
+              <label htmlFor="email" className="label-caps">Correo Electronico</label>
+              <input type="email" id="email" placeholder="correo@example.com" />
             </FormGroup>
             
             <FormGroup>
-              <label htmlFor="message" className="label-caps">PROJECT DESCRIPTION</label>
-              <textarea id="message" rows="4" placeholder="How can I help you build?"></textarea>
+              <label htmlFor="message" className="label-caps">Descripción del Proyecto</label>
+              <textarea 
+                id="message" 
+                rows="4" 
+                placeholder="¿Como puedo ayudarte?"
+                maxLength={500}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              ></textarea>
+              <CharCount className="label-caps">{message.length} / 500</CharCount>
             </FormGroup>
             
             <SubmitButton type="submit">
-              Transmit Message
+              Enviar Mensaje
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{marginLeft: '8px'}}>
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -72,6 +62,13 @@ const Contact = () => {
 };
 
 export default Contact;
+
+const IconEmail = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+    <polyline points="22,6 12,13 2,6"></polyline>
+  </svg>
+);
 
 const ContactGrid = styled.div`
   display: grid;
@@ -169,6 +166,12 @@ const FormGroup = styled.div`
     font-size: 16px;
     transition: all 0.3s ease;
     border-radius: 4px 4px 0 0;
+    resize: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    scrollbar-width: none;
 
     &:focus {
       outline: none;
@@ -181,6 +184,14 @@ const FormGroup = styled.div`
       color: rgba(255, 255, 255, 0.2);
     }
   }
+`;
+
+const CharCount = styled.div`
+  align-self: flex-end;
+  font-size: 10px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  letter-spacing: 0.1em;
 `;
 
 const SubmitButton = styled.button`

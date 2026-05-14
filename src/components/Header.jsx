@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const Header = () => {
   const [activeSection, setActiveSection] = useState('');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollToTop = (e) => {
     e.preventDefault();
@@ -11,6 +12,22 @@ const Header = () => {
       behavior: 'smooth'
     });
   };
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleNavClick = (e, targetId) => {
+    if (isMenuOpen) setIsMenuOpen(false);
+    // Intersection observer handles activeSection, but we can also set it here for immediate feedback if needed
+  };
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isMenuOpen]);
 
   useEffect(() => {
     const sections = document.querySelectorAll('section[id]');
@@ -36,10 +53,15 @@ const Header = () => {
 
   return (
     <HeaderContainer>
+      <MenuButton onClick={toggleMenu} aria-label="Menu" className="mobile-only">
+        {isMenuOpen ? <IconClose /> : <IconMenu />}
+      </MenuButton>
+
       <Logo>
         <a href="#" onClick={scrollToTop}>Software Developer</a>
       </Logo>
-      <Nav>
+
+      <Nav className="desktop-only">
         <NavList>
           <li><NavLink href="#about" $active={activeSection === 'about'} className="label-caps">SOBRE MÍ</NavLink></li>
           <li><NavLink href="#projects" $active={activeSection === 'projects'} className="label-caps">PROJECTOS</NavLink></li>
@@ -47,11 +69,23 @@ const Header = () => {
           <li><NavLink href="#contact" $active={activeSection === 'contact'} className="label-caps">CONTACTO</NavLink></li>
         </NavList>
       </Nav>
+
       <Actions>
         <button aria-label="Terminal">
           <IconTerminal />
         </button>
       </Actions>
+
+      <MobileOverlay $isOpen={isMenuOpen}>
+        <MobileNav>
+          <MobileNavList>
+            <li><MobileNavLink href="#about" onClick={(e) => handleNavClick(e, 'about')} $active={activeSection === 'about'} className="label-caps">SOBRE MÍ</MobileNavLink></li>
+            <li><MobileNavLink href="#projects" onClick={(e) => handleNavClick(e, 'projects')} $active={activeSection === 'projects'} className="label-caps">PROJECTOS</MobileNavLink></li>
+            <li><MobileNavLink href="#stack" onClick={(e) => handleNavClick(e, 'stack')} $active={activeSection === 'stack'} className="label-caps">STACK</MobileNavLink></li>
+            <li><MobileNavLink href="#contact" onClick={(e) => handleNavClick(e, 'contact')} $active={activeSection === 'contact'} className="label-caps">CONTACTO</MobileNavLink></li>
+          </MobileNavList>
+        </MobileNav>
+      </MobileOverlay>
     </HeaderContainer>
   );
 };
@@ -67,13 +101,27 @@ const IconTerminal = () => (
   </svg>
 );
 
+const IconMenu = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="3" y1="12" x2="21" y2="12"></line>
+    <line x1="3" y1="6" x2="21" y2="6"></line>
+    <line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+);
+
+const IconClose = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="18" y1="6" x2="6" y2="18"></line>
+    <line x1="6" y1="6" x2="18" y2="18"></line>
+  </svg>
+);
+
 const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 24px 48px;
   gap: 32px;
-  flex-wrap: wrap;
   position: sticky;
   top: 0;
   z-index: 50;
@@ -83,7 +131,7 @@ const HeaderContainer = styled.header`
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     padding: 16px 24px;
   }
 `;
@@ -91,6 +139,14 @@ const HeaderContainer = styled.header`
 const Logo = styled.div`
   flex: 1;
   flex-shrink: 0;
+  display: flex;
+  justify-content: flex-start;
+
+  @media (max-width: 900px) {
+    justify-content: center;
+    order: 2;
+  }
+
   a {
     font-family: var(--font-sans);
     font-weight: 700;
@@ -98,6 +154,10 @@ const Logo = styled.div`
     color: var(--text-primary);
     letter-spacing: -0.02em;
     white-space: nowrap;
+    
+    @media (max-width: 900px) {
+      font-size: 20px;
+    }
   }
 `;
 
@@ -105,12 +165,34 @@ const Nav = styled.nav`
   flex: 2;
   display: flex;
   justify-content: center;
+
+  &.desktop-only {
+    @media (max-width: 900px) {
+      display: none;
+    }
+  }
+`;
+
+const MenuButton = styled.button`
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 8px;
+  z-index: 101;
+  flex: 1;
+  justify-content: flex-start;
+
+  @media (max-width: 900px) {
+    display: flex;
+    order: 1;
+  }
 `;
 
 const NavList = styled.ul`
   display: flex;
   gap: 48px;
-  flex-wrap: wrap;
 `;
 
 const NavLink = styled.a`
@@ -119,6 +201,7 @@ const NavLink = styled.a`
   opacity: ${props => props.$active ? '1' : '0.7'};
   transition: opacity 0.2s ease, color 0.2s ease;
   position: relative;
+  white-space: nowrap;
 
   &::after {
     content: '';
@@ -147,6 +230,11 @@ const Actions = styled.div`
   flex: 1;
   display: flex;
   justify-content: flex-end;
+
+  @media (max-width: 900px) {
+    order: 3;
+  }
+
   button {
     color: var(--text-primary);
     opacity: 0.7;
@@ -165,5 +253,43 @@ const Actions = styled.div`
       width: 28px;
       height: 28px;
     }
+  }
+`;
+
+const MobileOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color-bg);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.8, 0, 0.2, 1);
+  transform: translateY(${props => props.$isOpen ? '0' : '-100%'});
+`;
+
+const MobileNav = styled.nav`
+  width: 100%;
+`;
+
+const MobileNavList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+`;
+
+const MobileNavLink = styled.a`
+  font-size: 32px;
+  font-weight: 700;
+  color: ${props => props.$active ? 'var(--color-accent)' : 'var(--text-primary)'};
+  transition: color 0.3s ease;
+  white-space: nowrap;
+
+  &:hover {
+    color: var(--color-accent);
   }
 `;

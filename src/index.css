@@ -91,7 +91,15 @@ button {
 .container {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 48px;
+
+  @media (max-width: 1400px) {
+    padding: 0 40px;
+  }
+
+  @media (max-width: 900px) {
+    padding: 0 24px;
+  }
 }
 
 .label-caps {
@@ -115,5 +123,11 @@ button {
 }
 
 .section {
-  padding: var(--section-padding) 0;
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+
+  @media (max-width: 900px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
 }
