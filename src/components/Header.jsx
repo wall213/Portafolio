@@ -54,7 +54,7 @@ const Header = () => {
   return (
     <HeaderContainer>
       <MenuButton onClick={toggleMenu} aria-label="Menu" className="mobile-only">
-        {isMenuOpen ? <IconClose /> : <IconMenu />}
+        {isMenuOpen ? <IconClose /> : <IconHexagonA />}
       </MenuButton>
 
       <Logo>
@@ -98,6 +98,14 @@ const IconTerminal = () => (
     <rect x="4" y="10" width="16" height="9" fill="var(--color-bg)" />
     <path d="M6,12l2,2l-2,2h1.2l2-2l-2-2H6z" fill="currentColor" />
     <rect x="12" y="15.5" width="4" height="1.5" fill="currentColor" />
+  </svg>
+);
+
+const IconHexagonA = () => (
+  <svg viewBox="0 0 100 100" className="hexagon-svg">
+    <polygon className="shadow" points="50,5 90,25 90,75 50,95 10,75 10,25" />
+    <polygon className="front" points="50,5 90,25 90,75 50,95 10,75 10,25" />
+    <text x="50" y="62" fontSize="35" fontWeight="bold" textAnchor="middle" fill="currentColor" stroke="none">A</text>
   </svg>
 );
 
@@ -187,6 +195,31 @@ const MenuButton = styled.button`
   @media (max-width: 900px) {
     display: flex;
     order: 1;
+  }
+
+  svg {
+    width: 32px;
+    height: 32px;
+    
+    &.hexagon-svg {
+      color: var(--color-accent);
+      fill: none;
+
+      .shadow {
+        fill: var(--color-accent);
+        opacity: 0;
+      }
+
+      .front {
+        fill: var(--color-bg);
+        stroke: var(--color-accent);
+        stroke-width: 5;
+      }
+      
+      text {
+        fill: var(--color-accent);
+      }
+    }
   }
 `;
 
