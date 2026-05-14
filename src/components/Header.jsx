@@ -54,7 +54,7 @@ const Header = () => {
   return (
     <HeaderContainer>
       <MenuButton onClick={toggleMenu} aria-label="Menu" className="mobile-only">
-        {isMenuOpen ? <IconClose /> : <IconMenu />}
+        {isMenuOpen ? <IconClose /> : <IconHexagonA />}
       </MenuButton>
 
       <Logo>
@@ -101,6 +101,14 @@ const IconTerminal = () => (
   </svg>
 );
 
+const IconHexagonA = () => (
+  <svg viewBox="0 0 100 100" className="hexagon-svg">
+    <polygon className="shadow" points="50,5 90,25 90,75 50,95 10,75 10,25" />
+    <polygon className="front" points="50,5 90,25 90,75 50,95 10,75 10,25" />
+    <text x="50" y="62" fontSize="35" fontWeight="bold" textAnchor="middle" fill="currentColor" stroke="none">A</text>
+  </svg>
+);
+
 const IconMenu = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -138,13 +146,13 @@ const HeaderContainer = styled.header`
 
 const Logo = styled.div`
   flex: 1;
-  flex-shrink: 0;
   display: flex;
   justify-content: flex-start;
 
   @media (max-width: 900px) {
     justify-content: center;
     order: 2;
+    flex: 2;
   }
 
   a {
@@ -156,7 +164,11 @@ const Logo = styled.div`
     white-space: nowrap;
     
     @media (max-width: 900px) {
-      font-size: 20px;
+      font-size: 18px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 16px;
     }
   }
 `;
@@ -187,6 +199,31 @@ const MenuButton = styled.button`
   @media (max-width: 900px) {
     display: flex;
     order: 1;
+  }
+
+  svg {
+    width: 32px;
+    height: 32px;
+    
+    &.hexagon-svg {
+      color: var(--color-accent);
+      fill: none;
+
+      .shadow {
+        fill: var(--color-accent);
+        opacity: 0;
+      }
+
+      .front {
+        fill: var(--color-bg);
+        stroke: var(--color-accent);
+        stroke-width: 5;
+      }
+      
+      text {
+        fill: var(--color-accent);
+      }
+    }
   }
 `;
 

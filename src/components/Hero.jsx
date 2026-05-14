@@ -34,6 +34,17 @@ const HeroLabel = styled.span`
   display: block;
   margin-bottom: 48px;
   font-size: 5rem;
+  font-weight: 700;
+
+  @media (max-width: 768px) {
+    font-size: 3.5rem;
+    margin-bottom: 32px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2.8rem;
+    margin-bottom: 24px;
+  }
 `;
 
 const HeroTitle = styled.h1`
@@ -42,6 +53,10 @@ const HeroTitle = styled.h1`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  
+  @media (max-width: 768px) {
+    margin-bottom: 32px;
+  }
 `;
 
 const HeroSubtitle = styled.p`
@@ -50,4 +65,8 @@ const HeroSubtitle = styled.p`
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+
+  @media (max-width: 480px) {
+    font-size: 16px;
+  }
 `;
