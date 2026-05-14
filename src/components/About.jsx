@@ -30,7 +30,7 @@ const About = () => {
         </AboutContent>
         
         <AboutImage className="glass-panel">
-          <img src="/portrait-placeholder.png" alt="Aldo Garcia Portrait" />
+          <img src="/1.jpg" alt="Aldo Garcia" />
         </AboutImage>
       </AboutGrid>
     </AboutSection>
@@ -95,16 +95,13 @@ const StatLabel = styled.span`
 
 const AboutImage = styled.div`
   width: 100%;
-  aspect-ratio: 4/3;
+  border-radius: var(--radius-base);
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    display: block;
     filter: grayscale(100%) contrast(1.1);
     transition: filter 0.3s ease;
   }

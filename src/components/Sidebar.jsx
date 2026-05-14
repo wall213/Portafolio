@@ -8,10 +8,10 @@ const Sidebar = () => {
       </TopLogo>
       <BottomSection>
         <SocialLinks>
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <a href="https://github.com/wall213" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
             <IconGithub />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/aldo-garc%C3%ADa-4bb0011a5" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <IconLinkedIn />
           </a>
         </SocialLinks>

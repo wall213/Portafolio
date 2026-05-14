@@ -1,5 +1,53 @@
 import styled from 'styled-components';
 
+const TechnicalArsenal = () => {
+  const stack = [
+    {
+      title: 'FRONTEND',
+      icon: <IconFrontend />,
+      items: ['React ', 'Angular', 'Styled Components']
+    },
+    {
+      title: 'BACKEND',
+      icon: <IconBackend />,
+      items: ['C# / .NET Core', 'Node.js', 'Python']
+    },
+    {
+      title: 'BASE DE DATOS',
+      icon: <IconDatabase />,
+      items: ['PostgreSQL', 'SQL Server', 'Supabase']
+    },
+    {
+      title: 'MOBILE',
+      icon: <IconMobile />,
+      items: ['React Native', 'Expo', 'Flutter']
+    }
+  ];
+
+  return (
+    <section id="stack" className="section container">
+      <ArsenalTitle>Arsenal Tecnico</ArsenalTitle>
+      <ArsenalGrid>
+        {stack.map((category) => (
+          <ArsenalCard key={category.title} className="glass-panel">
+            <ArsenalIconWrapper>
+              {category.icon}
+            </ArsenalIconWrapper>
+            <ArsenalCardTitle className="label-caps">{category.title}</ArsenalCardTitle>
+            <ArsenalList>
+              {category.items.map(item => (
+                <li key={item}>{item}</li>
+              ))}
+            </ArsenalList>
+          </ArsenalCard>
+        ))}
+      </ArsenalGrid>
+    </section>
+  );
+};
+
+export default TechnicalArsenal;
+
 const IconFrontend = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
@@ -31,55 +79,6 @@ const IconMobile = () => (
     <line x1="12" y1="18" x2="12.01" y2="18"></line>
   </svg>
 );
-
-const TechnicalArsenal = () => {
-  const stack = [
-    {
-      title: 'FRONTEND',
-      icon: <IconFrontend />,
-      items: ['React / Next.js', 'Angular', 'Tailwind CSS']
-    },
-    {
-      title: 'BACKEND',
-      icon: <IconBackend />,
-      items: ['C# / .NET Core', 'Node.js', 'Python']
-    },
-    {
-      title: 'DATABASE',
-      icon: <IconDatabase />,
-      items: ['PostgreSQL', 'SQL Server', 'Supabase']
-    },
-    {
-      title: 'MOBILE',
-      icon: <IconMobile />,
-      items: ['React Native', 'Expo', 'Flutter']
-    }
-  ];
-
-  return (
-    <section id="stack" className="section container">
-      <ArsenalTitle>Technical Arsenal</ArsenalTitle>
-      
-      <ArsenalGrid>
-        {stack.map((category) => (
-          <ArsenalCard key={category.title} className="glass-panel">
-            <ArsenalIconWrapper>
-              {category.icon}
-            </ArsenalIconWrapper>
-            <ArsenalCardTitle className="label-caps">{category.title}</ArsenalCardTitle>
-            <ArsenalList>
-              {category.items.map(item => (
-                <li key={item}>{item}</li>
-              ))}
-            </ArsenalList>
-          </ArsenalCard>
-        ))}
-      </ArsenalGrid>
-    </section>
-  );
-};
-
-export default TechnicalArsenal;
 
 const ArsenalTitle = styled.h2`
   text-align: center;

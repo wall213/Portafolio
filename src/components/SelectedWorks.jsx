@@ -29,12 +29,9 @@ const SelectedWorks = () => {
     <WorksSection id="projects" className="section container">
       <WorksHeader>
         <WorksTitleGroup>
-          <h2>Selected Works</h2>
-          <p>Architecture meets execution. A collection of systems built for performance.</p>
+          <h2>Trabajos selecionados</h2>
+          <p>Una colección de sistemas creados por mi para mejorar el rendimiento de tareas recurrentes.</p>
         </WorksTitleGroup>
-        <WorksCounter className="label-caps">
-          01 — 03
-        </WorksCounter>
       </WorksHeader>
       
       <WorksGrid>
@@ -85,11 +82,6 @@ const WorksTitleGroup = styled.div`
     color: var(--text-secondary);
     margin-top: 8px;
   }
-`;
-
-const WorksCounter = styled.div`
-  color: var(--text-secondary);
-  opacity: 0.7;
 `;
 
 const WorksGrid = styled.div`
