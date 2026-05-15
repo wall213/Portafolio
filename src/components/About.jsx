@@ -23,7 +23,7 @@ const About = () => {
               <StatLabel className="label-caps">Años Exp.</StatLabel>
             </StatItem>
             <StatItem>
-              <StatNumber>40+</StatNumber>
+              <StatNumber>10+</StatNumber>
               <StatLabel className="label-caps">Projectos</StatLabel>
             </StatItem>
           </AboutStats>
