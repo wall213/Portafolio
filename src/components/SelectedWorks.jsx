@@ -4,17 +4,17 @@ const SelectedWorks = () => {
   const projects = [
     {
       id: 1,
-      title: 'E-commerce Platform',
-      description: 'A high-throughput headless commerce engine built with .NET and React.',
+      title: 'Portal de Pagos HDI',
+      description: 'Un portal para realizar pagos de polizas hecho en React y C#/.NET como Backend.',
       tags: ['REACT', '.NET', 'SQL'],
-      image: '/project-1.png'
+      image: '/PortalHDI.png'
     },
     {
       id: 2,
-      title: 'AI SaaS Engine',
-      description: 'Predictive analytics dashboard utilizing Python and real-time streaming.',
-      tags: ['PYTHON', 'EXPRESS', 'REACT'],
-      image: '/project-2.png'
+      title: 'PianoTrainer',
+      description: 'Una aplicacion para practicar piano con el teclado de la computadora dando la sensacion de un piano real.',
+      tags: ['REACT', 'TYPESCRIPT', 'TAILWIND'],
+      image: '/PianoTrainer.png'
     },
     {
       id: 3,
@@ -102,13 +102,16 @@ const ProjectImage = styled.div`
   aspect-ratio: 16/10;
   width: 100%;
   overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
 
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    display: block;
+    object-fit: contain;
+    background: #1a1a1a;
     filter: grayscale(80%) brightness(0.8);
-    transition: all 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 `;
 
