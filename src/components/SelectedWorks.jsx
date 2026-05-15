@@ -5,23 +5,26 @@ const SelectedWorks = () => {
     {
       id: 1,
       title: 'Portal de Pagos HDI',
-      description: 'Un portal para realizar pagos de polizas hecho en React y C#/.NET como Backend.',
+      description: 'Un portal para realizar pagos de polizas hecho en React y C#/.NET como Backend, tambien interactue con base de datos.',
       tags: ['REACT', '.NET', 'SQL'],
-      image: '/PortalHDI.png'
+      image: '/PortalHDI.png',
+      link: 'https://portalpagos.hdi.com.mx/identificaPoliza'
     },
     {
       id: 2,
       title: 'PianoTrainer',
       description: 'Una aplicacion para practicar piano con el teclado de la computadora dando la sensacion de un piano real.',
       tags: ['REACT', 'TYPESCRIPT', 'TAILWIND'],
-      image: '/PianoTrainer.png'
+      image: '/PianoTrainer.png',
+      link: 'https://pianotrainer.atomsystems.org/'
     },
     {
       id: 3,
       title: 'FinTech App',
       description: 'Cross-platform mobile wallet with biometric security and instant transfers.',
       tags: ['REACT NATIVE', 'NODE.JS', 'POSTGRES'],
-      image: '/project-3.png'
+      image: '/project-3.png',
+      link: '#'
     }
   ];
 
@@ -36,7 +39,13 @@ const SelectedWorks = () => {
       
       <WorksGrid>
         {projects.map((project) => (
-          <ProjectCard key={project.id} className="glass-panel">
+          <ProjectCard 
+            key={project.id} 
+            href={project.link} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="glass-panel"
+          >
             <ProjectImage>
               <img src={project.image} alt={project.title} />
             </ProjectImage>
@@ -115,11 +124,13 @@ const ProjectImage = styled.div`
   }
 `;
 
-const ProjectCard = styled.div`
+const ProjectCard = styled.a`
   display: flex;
   flex-direction: column;
   overflow: hidden;
   transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
 
   &:hover {
     transform: translateY(-4px);

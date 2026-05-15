@@ -1,16 +1,34 @@
-# React + Vite
+# Aldo García | Fullstack Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-8.0-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Styled Components](https://img.shields.io/badge/Styled--Components-💅-DB7093?style=for-the-badge)
 
-Currently, two official plugins are available:
+Este es mi portafolio profesional, diseñado con una estética moderna de **Glassmorphism** y un enfoque en la experiencia de usuario (UX) fluida. Construido para mostrar mis habilidades en desarrollo Fullstack, desde interfaces reactivas hasta arquitecturas de backend robustas.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Características Principales
 
-## React Compiler
+- **Diseño Premium**: Interfaz moderna con efectos de cristal (glassmorphism), gradientes sutiles y micro-animaciones.
+- **Totalmente Responsivo**: Optimizado para dispositivos móviles, tablets y desktops.
+- **Alto Rendimiento**: Construido sobre Vite 8 y React 19 para una carga ultra rápida.
+- **Arsenal Técnico**: Visualización interactiva de mis habilidades en Frontend, Backend y Mobile.
+- **Sección de Contacto**: Integración directa para conectar y colaborar en proyectos.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Arsenal Técnico
 
-## Expanding the ESLint configuration
+| Frontend | Backend | Base de Datos | Mobile |
+| :--- | :--- | :--- | :--- |
+| React 19 | C# / .NET Core | PostgreSQL | React Native |
+| Angular | Node.js | SQL Server | Expo |
+| Styled Components | Python | Supabase | Flutter |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## Conectemos
+
+Si te gusta mi trabajo o tienes una propuesta interesante, ¡no dudes en contactarme!
+
+- **LinkedIn**: [Aldo García](https://www.linkedin.com/in/aldo-garc%C3%ADa-4bb0011a5)
+- **GitHub**: [@wall213](https://github.com/wall213)
+
+---
+Desarrollado con ❤️ por **Aldo García**
