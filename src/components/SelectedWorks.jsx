@@ -20,11 +20,11 @@ const SelectedWorks = () => {
     },
     {
       id: 3,
-      title: 'FinTech App',
-      description: 'Cross-platform mobile wallet with biometric security and instant transfers.',
-      tags: ['REACT NATIVE', 'NODE.JS', 'POSTGRES'],
-      image: '/project-3.png',
-      link: '#'
+      title: 'App_Gastos',
+      description: 'Aplicacion para gestionar gastos personales con funciones de autenticación, gastos, ingresos, y almacenamiento de datos, categoriasy manipulacion de datos',
+      tags: ['REACT NATIVE', 'SUPABASE', 'JAVASCRIPT'],
+      image: '/appgastos.png',
+      link: 'https://github.com/wall213/App_Gastos'
     }
   ];
 
