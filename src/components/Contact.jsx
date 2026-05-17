@@ -16,7 +16,7 @@ const Contact = () => {
               <MethodIcon><IconEmail /></MethodIcon>
               <MethodDetails>
                 <span className="label-caps">EMAIL</span>
-                <a href="mailto:wall2mdf@gmail.com">wall2mdf@gmail.com</a>
+                <a href="mailto:garciaolveraaldo@gmail.com">garciaolveraaldo@gmail.com</a>
               </MethodDetails>
             </ContactMethod>
           </ContactMethods>
